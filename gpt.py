@@ -1,7 +1,7 @@
 # pip install openai
 
 from openai import OpenAI
-client = OpenAI(api_key="")
+client = OpenAI(api_key="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")
 
 response = client.chat.completions.create(
   model="gpt-3.5-turbo-1106",
