@@ -1,3 +1,11 @@
+
+function displayWord(word){
+    document.getElementById('wordDisplay').innerText = "Transcribe \"" + word + "\"";
+}
+
+document.getElementById('feedback').innerText = "This is feedback your trasncription is breuatiuahirbnfgidfk sa s sdfadfjsakfdnlsdanjfsjkaffffffddfjksnkfjndsakfjn ksndkj fnsdkjfns kjfndsn fdkjn";
+
+
 function submitTranscription() {
     const transcription = document.getElementById('ipaInput').value;
     fetch('/check_transcription', {
@@ -48,4 +56,4 @@ createButtons(ipaSymbols2, 'ipaKeyboard2');
 createButtons(ipaSymbols3, 'ipaKeyboard3');
 
 // Example to display a word (this part can be dynamic)
-document.getElementById('wordDisplay').innerText = "Example Word";
+displayWord("funny");
