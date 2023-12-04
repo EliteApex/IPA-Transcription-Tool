@@ -11,26 +11,23 @@ function displayFeedback(feedback){
     document.getElementById('feedback').innerText = "GPT's feedback: " + feedback;
 }
 
-// handling submit
 document.getElementById('textForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevents the default form submission behavior
+    e.preventDefault();
 
-    const textInput = document.getElementById('textInput').value;
+    var textInput = document.getElementById('textInput').value;
+    var formData = new URLSearchParams();
+    formData.append('textInput', textInput);
 
     fetch('/submit-text', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `textInput=${encodeURIComponent(textInput)}`
+        body: formData,
     })
     .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        // You can display the response on the page or process it as needed
-    });
+    .then(data => console.log(data));
 });
-
 
 const ipaSymbols1 = [
     "ɓ", "ʙ", "β", "ɕ", "ç", "ɗ", "ɖ", "ð", "ʤ", "ɟ", "ʄ", "ɡ", "ɠ", "ɢ", "ʛ",
