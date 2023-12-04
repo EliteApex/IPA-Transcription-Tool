@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0e6ff; /* Light purple */
+    color: #5c4a72; /* Dark purple */
+    text-align: center;
+}
+
+#app {
+    margin: 20px;
+}
+
+#wordDisplay {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#ipaInput {
+    border: 2px solid #ff7f50; /* Coral */
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #ff7f50; /* Coral */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ff9568;
+}
+
+.ipaKeyboard {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #5c4a72; /* Dark purple */
+    background-color: #eae6ff; /* Very light purple */
+    border-radius: 5px;
+}
+
+.ipaKeyboard button {
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #5c4a72; /* Dark purple */
+    background-color: #f0e6ff; /* Light purple */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+}
+
+.ipaKeyboard button:hover {
+    background-color: #ff7f50; /* Coral */
+    color: white;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-style: italic;
+}
