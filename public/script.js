@@ -55,7 +55,7 @@ function createButtons(symbols, keyboardId) {
 }
 
 function insertSymbol(symbol) {
-    const input = document.getElementById('ipaInput');
+    const input = document.getElementById('textInput');
     input.value += symbol;
 }
 
