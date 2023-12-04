@@ -14,9 +14,9 @@ function displayFeedback(feedback){
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var textInput = document.getElementById('textInput').value;
+    var textInput = document.getElementById('textInput');
     var formData = new URLSearchParams();
-    formData.append('textInput', textInput);
+    formData.append('textInput', textInput.value);
 
     fetch('/submit-text', {
         method: 'POST',
@@ -27,6 +27,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
     })
     .then(response => response.text())
     .then(data => console.log(data));
+
+    // clear input box when submit presssed
+    textInput.value = '';
 });
 
 const ipaSymbols1 = [
