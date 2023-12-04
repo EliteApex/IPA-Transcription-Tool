@@ -3,7 +3,9 @@ function displayWord(word){
     document.getElementById('wordDisplay').innerText = "Transcribe \"" + word + "\"";
 }
 
-document.getElementById('feedback').innerText = "This is feedback your trasncription is breuatiuahirbnfgidfk sa s sdfadfjsakfdnlsdanjfsjkaffffffddfjksnkfjndsakfjn ksndkj fnsdkjfns kjfndsn fdkjn";
+function displayFeedback(feedback){
+    document.getElementById('feedback').innerText = "GPT's feedback: " + feedback;
+}
 
 
 function submitTranscription() {
@@ -57,3 +59,4 @@ createButtons(ipaSymbols3, 'ipaKeyboard3');
 
 // Example to display a word (this part can be dynamic)
 displayWord("funny");
+displayFeedback("To achieve the functionality you're looking for, you'll need to write JavaScript code that interacts with the HTML elements. Here's a basic script that can be included in your script.js file. This script will update the wordDisplay and feedback div elements based on user input and a button click event.");
