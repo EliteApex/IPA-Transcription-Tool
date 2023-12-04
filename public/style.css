@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0e6ff; /* Light purple */
-    color: #5c4a72; /* Dark purple */
+    background-color: #ebeaea;
+    color: #ff7f50;
     text-align: center;
 }
 
@@ -16,7 +16,7 @@ body {
 }
 
 #ipaInput {
-    border: 2px solid #ff7f50; /* Coral */
+    border: 2px solid #ff7f50;
     border-radius: 5px;
     padding: 10px;
     width: 300px;
@@ -24,7 +24,7 @@ body {
 }
 
 button {
-    background-color: #ff7f50; /* Coral */
+    background-color: #ff7f50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -37,19 +37,39 @@ button:hover {
     background-color: #ff9568;
 }
 
+.feedback-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    width: 100%; /* Ensure the container spans the full width */
+}
+
+#feedback {
+    border: 2px solid black; /* This creates a black border */
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 50px;
+    box-sizing: border-box; /* Include padding and border in the element's width */
+    max-width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;           /* This adds some space inside the box */
+    margin: 10px;            /* This adds some space outside the box */
+    box-shadow: 3px 3px 5px grey; /* Optional: Adds a shadow for a 3D effect */
+}
+
 .ipaKeyboard {
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #5c4a72; /* Dark purple */
-    background-color: #eae6ff; /* Very light purple */
+    border: 1px solid #ff7f50;
+    background-color: #ffffff;
     border-radius: 5px;
 }
 
 .ipaKeyboard button {
     padding: 5px 10px;
     margin: 2px;
-    border: 1px solid #5c4a72; /* Dark purple */
-    background-color: #f0e6ff; /* Light purple */
+    border: 1px solid #ff9568;
+    background-color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -57,7 +77,7 @@ button:hover {
 }
 
 .ipaKeyboard button:hover {
-    background-color: #ff7f50; /* Coral */
+    background-color: #ff7f50;
     color: white;
 }
 
