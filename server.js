@@ -3,11 +3,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-// Middleware to parse the body of the request as URL-encoded data
-app.use(express.urlencoded({ extended: true }));
+
 
 // Serve static files (CSS, client-side JS, images, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// Middleware to parse the body of the request as URL-encoded data
+app.use(express.urlencoded({ extended: true }));
 
 // Endpoint to serve the HTML file
 app.get('/', (req, res) => {
