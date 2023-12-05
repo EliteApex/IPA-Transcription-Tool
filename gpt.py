@@ -1,4 +1,3 @@
-
 from openai import OpenAI
 import env
 import sys
