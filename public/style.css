@@ -44,13 +44,13 @@ button:hover {
 }
 
 #feedback {
+    display: none;
     border: 2px solid black; /* This creates a black border */
     min-width: 200px;
     max-height: 200px;
     min-height: 50px;
     box-sizing: border-box; /* Include padding and border in the element's width */
     max-width: 50%;
-    display: block;
     margin: 0 auto;
     padding: 10px;           /* This adds some space inside the box */
     margin: 10px;            /* This adds some space outside the box */

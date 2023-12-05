@@ -8,7 +8,9 @@ function displayWord(word){
 // display feedback from gpt
 // param: string feedback
 function displayFeedback(feedback){
-    document.getElementById('feedback').innerText = "GPT's feedback: " + feedback;
+    var feedbackElement = document.getElementById('feedback');
+    feedbackElement.innerText = "GPT's feedback: " + feedback;
+    feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
 
 document.getElementById('textForm').addEventListener('submit', function(e) {
@@ -26,7 +28,10 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
         body: formData,
     })
     .then(response => response.text())
-    .then(data => console.log(data));
+    .then(data => {
+        // Assuming 'data' contains the new feedback message
+        displayFeedback(data); // Update and show the feedback
+    });
 
     // clear input box when submit presssed
     textInput.value = '';
@@ -68,4 +73,3 @@ createButtons(ipaSymbols3, 'ipaKeyboard3');
 
 // Example to display a word (this part can be dynamic)
 displayWord("funny");
-displayFeedback("To achieve the functionality you're looking for, you'll need to write JavaScript code that interacts with the HTML elements. Here's a basic script that can be included in your script.js file. This script will update the wordDisplay and feedback div elements based on user input and a button click event.");
