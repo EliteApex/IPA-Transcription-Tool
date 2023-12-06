@@ -35,20 +35,21 @@ body {
 
 #app {
     margin: 20px;
+    font-size: 30px;
 }
 
 #wordDisplay {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 25px;
+    font-size: 35px;
     font-weight: bold;
 }
 
 #textInput {
     border: 2px solid #9e41c9;
     border-radius: 5px;
-    padding: 10px;
-    width: 300px;
-    margin-bottom: 10px;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -56,13 +57,13 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     cursor: pointer;
     margin-top: 10px;
 }
 
 button:hover {
-    background-color: #ff9568;
+    background-color: #585558;
 }
 
 .feedback-container {
@@ -73,9 +74,10 @@ button:hover {
 
 #feedback {
     display: none;
+    font-size: 23px;
     border: 2px solid rgb(36, 36, 36); /* This creates a black border */
     min-width: 200px;
-    max-height: 200px;
+    max-height: 500px;
     min-height: 50px;
     box-sizing: border-box; /* Include padding and border in the element's width */
     max-width: 50%;
@@ -100,7 +102,7 @@ button:hover {
     background-color: #333231;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 25px;
     color: #baaec0;
 }
 
