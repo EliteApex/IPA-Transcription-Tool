@@ -13,3 +13,5 @@ Will (or instructor) can upload a file called `words.csv` containing the desired
 * `pip install env`
 * `pip install sqlite3`
 
+4. Set Environment Variable to API key: [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
+

@@ -1,8 +1,10 @@
 from openai import OpenAI
-import env
+#import env     # for Jeannie; uncomment everyone else
 import sys
+import os
 
-client = OpenAI(api_key=env.api_key)
+#client = OpenAI(api_key=env.api_key)     # for Jeannie; uncomment everyone else
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])   # comment out everyone
 
 def get_feedback(word, wills_transcription, students_transcription):
     response = client.chat.completions.create(
