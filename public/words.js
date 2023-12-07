@@ -13,8 +13,8 @@ const wordsInOrder = [];
   fs.createReadStream(csvPath)
     .pipe(csv())
     .on('data', (row) => {
-      const word = row['WordColumnHeader']; // Replace with your actual column header
-      const transcription = row['TranscriptionColumnHeader']; // Replace with your actual column header
+      const word = row['Word']; // Replace with your actual column header
+      const transcription = row['Transcription']; // Replace with your actual column header
       wordMap[word] = transcription;
       wordsInOrder.push(word);
     });
