@@ -1,6 +1,6 @@
 
 # IPA Transcription Helper
-Webapp powered by GPT-4 to help Linguistics 101 students practice transcribing words to the International Phonetic Alphabet.
+Webapp powered by GPT-4 to help Linguistics 101 students practice transcribing words to the International Phonetic Alphabet. Intended for use in [Will Styler's](https://wstyler.ucsd.edu/) LIGN 101 course. Uses words and transcription answers from Will's IPA exercises.
 
 
 ## Features
