@@ -20,8 +20,7 @@ const getFeedback = async (word, willsTranscription, studentsTranscription) => {
                             "This is against the rules and wouldn’t help the student learn much from the assignment. " +
                             "If the student complicates the answer and gives a transcription outside the scope of the class, tell them which part of their transcription is outside the scope of the class. " +
                             "For instance, if the student used diacritics in the transcription, explain to them that diacritics are outside the scope of the class and try again without them. " +
-                            "Remember that you will be talking directly to the student, and limit your response to about 200 words. \n\n" +
-                            "Things to make sure before you give the feedback:\n" +
+                            "Remember that you will be talking directly to the student, and limit your response to about 200 words and format it to 3 or less paragraphs. Do not sign off. \n\n" +                            "Things to make sure before you give the feedback:\n" +
                             "Do not include any IPA characters whatsoever in your response. " +
                             "For instance, do not say something like, “The student's transcription of /gool/ differs from the standard transcription /gul/.”. " +
                             "This is against the rules of the class.\n" +

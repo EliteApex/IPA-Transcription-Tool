@@ -14,7 +14,6 @@ function displayFeedback(feedback){
     feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
 
-
 // actually getting the gpt feedback now
 
 
@@ -23,7 +22,9 @@ var currWillTransc = '';
 
 var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s. ' +
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
+
 var button = document.querySelector('button'); // assumes only one button
+var feedbackLine = document.getElementById('feedback'); // for loading animation
 
 // get the initial word
 fetch('/next-word')
@@ -98,6 +99,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
             // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
+                feedbackLine.classList.remove('loading');
                 console.log("CORRECT");
                 gotCorrect = true;
                 console.log('Feedback:', correctFeedback);
@@ -109,7 +111,8 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
             else {
                 console.log("INCORRECT")
                 console.log(currWord, currWillTransc, data); // Debugging line
-                displayFeedback("..."); // Update and show the feedback
+                displayFeedback(""); // Update and show the feedback
+                feedbackLine.classList.add('loading');
 
                 fetch('/feedback', {
                     method: 'POST',
@@ -124,6 +127,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    feedbackLine.classList.remove('loading');
                     console.log('Feedback:', data.feedback);
                     displayFeedback(data.feedback); // display feedback
                 })
