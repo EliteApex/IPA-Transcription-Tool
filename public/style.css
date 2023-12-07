@@ -1,55 +1,55 @@
 @font-face {
     font-family: 'Charis SIL';
-    src: url("./CharisSIL-6.200/web/CharisSIL-Regular.woff") format('woff');
+    src: url("./fonts/CharisSIL-6.200/web/CharisSIL-Regular.woff") format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Charis SIL';
-    src: url("./CharisSIL-6.200/web/CharisSIL-Bold.woff") format('woff');
+    src: url("./fonts/CharisSIL-6.200/web/CharisSIL-Bold.woff") format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Charis SIL';
-    src: url("./CharisSIL-6.200/web/CharisSIL-Italic.woff") format('woff');
+    src: url("./fonts/CharisSIL-6.200/web/CharisSIL-Italic.woff") format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Charis SIL';
-    src: url("./CharisSIL-6.200/Cweb/CharisSIL-BoldItalic.woff") format('woff');
+    src: url("./fonts/CharisSIL-6.200/Cweb/CharisSIL-BoldItalic.woff") format('woff');
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Space Grotesk';
-    src: url("./SpaceGrotesk/SpaceGrotesk-Bold.ttf") format('truetype');
+    src: url("./fonts/SpaceGrotesk/SpaceGrotesk-Bold.ttf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Space Grotesk';
-    src: url("./SpaceGrotesk/SpaceGrotesk-Regular.ttf") format('truetype');
+    src: url("./fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Inter';
-    src: url("./Inter/Inter-Light.ttf") format('truetype');
+    src: url("./fonts/Inter/Inter-Light.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'InterB';
-    src: url("./Inter/Inter-Medium.ttf") format('truetype');
+    src: url("./fonts/Inter/Inter-Medium.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }

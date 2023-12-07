@@ -1,4 +1,6 @@
+/** Static js file */
 
+/* Transcription Functionality */
 
 // display word to transcribe
 // param: string word
@@ -14,19 +16,19 @@ function displayFeedback(feedback){
     feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
 
-
-// actually getting the gpt feedback now
-
-
+// store current word and answer
 var currWord = '';
 var currWillTransc = '';
 
+// hardcorded correct response
 var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s. ' +
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
 
-var button = document.querySelector('button'); // assumes only one button
+var button = document.querySelector('button');
 var feedbackElement = document.getElementById('feedback');
 var metaFeedbackElement = document.getElementById('metaFeedback');
+
+var gotCorrect = false; // track whether to move onto the next word
 
 // get the initial word
 fetch('/next-word')
@@ -44,14 +46,10 @@ fetch('/next-word')
     console.error('Error fetching the next word:', error);
   });
 
-var gotCorrect = false; // track whether to move onto the next word
 
 // SUBMIT or NEXT WORD button clicked (or ENTER pressed)
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    //button.style.backgroundColor = '#9e41c9';
-    //button.textContent = 'Submit';
-
 
     var textInput = document.getElementById('textInput');
     var formData = new URLSearchParams();
@@ -66,68 +64,74 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
     })
     .then(response => response.text())
     .then(data => {
-        // ******UPON SUBMIT: Crucial content
+        // ******UPON SUBMIT: Crucial content******
         console.log("DATA: ", data);
 
-        // moving onto next word
+        // move onto next word
         if (gotCorrect){
+            // reset everything
             button.classList.remove('button-green');
             button.textContent = 'Submit';
-
-            gotCorrect = false; // reset
+            gotCorrect = false;
             textInput.value = '';             // clear input box
             metaFeedbackElement.style.display = 'none';
 
-            // getNextWord
+            // get the next word
             fetch('/next-word')
                 .then(response => response.json())
                 .then(data => {
-
+                    // store next word
                     currWord = data[0];
                     currWillTransc = data[1];
 
                     console.log('New Word:', currWord);
                     console.log('New Transcription:', currWillTransc);
-                    displayWord(currWord); // oh boy! new word!
-                    
+
+                    // display the word ("Transcribe <word>")
+                    displayWord(currWord);
                     // make feedback box invisible
                     feedbackElement.style.display = 'none';
-                
                 })
                 .catch(error => {
                     console.error('Error fetching the next word:', error);
                 });            
         }   
-        else {  // text submitted
+        else {  // submitted text
             // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
-                metaFeedbackElement.style.display = 'none';
+
                 displayFeedback(''); // Display feedback after delay
+                metaFeedbackElement.style.display = 'none';
                 feedbackElement.classList.add('loading');
+
                 // Set a timeout to delay the correct feedback display (more satisfying?)
                 setTimeout(() => {
-                    feedbackElement.classList.remove('loading'); // Stop loading animation
                     console.log("CORRECT");
+                    feedbackElement.classList.remove('loading'); // Stop loading animation
                     gotCorrect = true;
                     console.log('Feedback:', correctFeedback);
-                    displayFeedback(correctFeedback); // Display feedback after delay
+                    displayFeedback(correctFeedback);
+
                     // Change metafeedback
                     metaFeedbackElement.style.display = 'block';
                     metaFeedbackElement.style.color = '#32de84';
                     metaFeedbackElement.innerText = 'Great work!';
+
                     // Change button message + color
                     button.classList.add('button-green');
                     button.textContent = 'Next Word!';
-                }, 3000); // 3 seconds delay}
+
+                }, 3000); // 3 seconds delay
             }
             else {
-                metaFeedbackElement.style.display = 'none';
                 console.log("INCORRECT")
                 console.log(currWord, currWillTransc, data); // Debugging line
-                displayFeedback(""); // Update and show the feedback
+                metaFeedbackElement.style.display = 'none';
+                displayFeedback(''); // Update and show the feedback
                 textInput.value = '';             // clear input box
                 feedbackElement.classList.add('loading');
 
+                // get feedback
                 fetch('/feedback', {
                     method: 'POST',
                     headers: {
@@ -141,15 +145,15 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    feedbackElement.classList.remove('loading');
+                    console.log('Feedback:', data.feedback);
+                    displayFeedback(data.feedback); // display feedback
+
                     // Change metafeedback
                     metaFeedbackElement.style.display = 'block';
                     metaFeedbackElement.style.color = '#e48484';
                     metaFeedbackElement.innerHTML = 'Not quite; your transcription was not the same as Will\'s.'+
                     '<br>GPT may erroneously say it was right. Try again!';
-                    
-                    feedbackElement.classList.remove('loading');
-                    console.log('Feedback:', data.feedback);
-                    displayFeedback(data.feedback); // display feedback
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -161,6 +165,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
    
 });
+
+
+/* IPA Keyboard */
 
 const ipaSymbols1 = [
     "ɓ", "ʙ", "β", "ɕ", "ç", "ɗ", "ɖ", "ð", "ʤ", "ɟ", "ʄ", "ɡ", "ɠ", "ɢ", "ʛ",
@@ -196,9 +203,3 @@ function insertSymbol(symbol) {
 createButtons(ipaSymbols1, 'ipaKeyboard1');
 createButtons(ipaSymbols2, 'ipaKeyboard2');
 createButtons(ipaSymbols3, 'ipaKeyboard3');
-
-// Example to display a word (this part can be dynamic)
-//displayWord("funny");
-
-
-// get the feedback!
