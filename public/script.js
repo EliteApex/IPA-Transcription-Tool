@@ -21,7 +21,7 @@ function displayFeedback(feedback){
 var currWord = '';
 var currWillTransc = '';
 
-var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s.' +
+var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s. ' +
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
 var button = document.querySelector('button'); // assumes only one button
 
@@ -46,8 +46,8 @@ var gotCorrect = false; // track whether to move onto the next word
 // SUBMIT or NEXT WORD button clicked (or ENTER pressed)
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    button.style.backgroundColor = '#9e41c9';
-    button.textContent = 'Submit';
+    //button.style.backgroundColor = '#9e41c9';
+    //button.textContent = 'Submit';
 
 
     var textInput = document.getElementById('textInput');
@@ -68,6 +68,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
         // moving onto next word
         if (gotCorrect){
+            button.classList.remove('button-green');
+            button.textContent = 'Submit';
+
             gotCorrect = false; // reset
 
             // getNextWord
@@ -100,7 +103,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 console.log('Feedback:', correctFeedback);
                 displayFeedback(correctFeedback); // display feedback
                 // change button message + color
-                button.style.backgroundColor = 'green';
+                button.classList.add('button-green');
                 button.textContent = 'Next Word!';
             }
             else {
