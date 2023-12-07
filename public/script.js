@@ -1,4 +1,5 @@
 
+
 // display word to transcribe
 // param: string word
 function displayWord(word){
@@ -12,6 +13,20 @@ function displayFeedback(feedback){
     feedbackElement.innerText = "GPT's feedback: " + feedback;
     feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
+
+
+// var correctAnswer = false;  // currently got correct answer?
+// var currentWordPair = null;
+
+// fetch('/next-word')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log('Next Word:', data[0]);
+//     console.log('Transcription:', data[1]);
+//   })
+//   .catch(error => {
+//     console.error('Error fetching the next word:', error);
+//   });
 
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -29,7 +44,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
     })
     .then(response => response.text())
     .then(data => {
+        // ******UPON SUBMIT: Crucial content
         // Assuming 'data' contains the new feedback message
+        // get the feedback 
         displayFeedback(data); // Update and show the feedback
     });
 
@@ -73,3 +90,7 @@ createButtons(ipaSymbols3, 'ipaKeyboard3');
 
 // Example to display a word (this part can be dynamic)
 displayWord("funny");
+
+
+// get the feedback!
+//const getFeedback = require('./gpt');
