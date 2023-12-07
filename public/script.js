@@ -15,19 +15,31 @@ function displayFeedback(feedback){
 }
 
 
-// var correctAnswer = false;  // currently got correct answer?
-// var currentWordPair = null;
+// actually getting the gpt feedback now
 
-// fetch('/next-word')
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log('Next Word:', data[0]);
-//     console.log('Transcription:', data[1]);
-//   })
-//   .catch(error => {
-//     console.error('Error fetching the next word:', error);
-//   });
 
+var currWord = '';
+var currWillTransc = '';
+
+// get the initial word
+fetch('/next-word')
+  .then(response => response.json())
+  .then(data => {
+
+    currWord = data[0];
+    currWillTransc = data[1];
+
+    console.log('New Word:', currWord);
+    console.log('New Transcription:', currWillTransc);
+  })
+  .catch(error => {
+    console.error('Error fetching the next word:', error);
+  });
+
+
+var gotCorrect = false; // track whether to move onto the next word
+
+// SUBMIT or NEXT WORD button clicked (or ENTER pressed)
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -45,8 +57,62 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
     .then(response => response.text())
     .then(data => {
         // ******UPON SUBMIT: Crucial content
-        // Assuming 'data' contains the new feedback message
-        // get the feedback 
+        console.log("DATA: ", data);
+
+        // moving onto next word
+        if (gotCorrect){
+            gotCorrect = false; // reset
+            
+            // getNextWord
+            fetch('/next-word')
+                .then(response => response.json())
+                .then(data => {
+
+                    currWord = data[0];
+                    currWillTransc = data[1];
+
+                    console.log('New Word:', currWord);
+                    console.log('New Transcription:', currWillTransc);
+                })
+                .catch(error => {
+                    console.error('Error fetching the next word:', error);
+                });
+            
+            displayWord(currWord); // oh boy! new word!
+            
+        }   
+        else {  // text submitted
+            console.log("HELP")
+            console.log(currWord, currWillTransc, data); // Debugging line
+            fetch('/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    word: currWord,
+                    willsTranscription: currWillTransc,
+                    studentsTranscription: data
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Feedback:', data.feedback);
+                displayFeedback(data.feedback); // display feedback
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            // if correct, set correct
+            if (data === currWillTransc) {
+                console.log("CORRECT");
+                gotCorrect = true;
+            }
+        }
+
+
+
         displayFeedback(data); // Update and show the feedback
     });
 
@@ -89,8 +155,7 @@ createButtons(ipaSymbols2, 'ipaKeyboard2');
 createButtons(ipaSymbols3, 'ipaKeyboard3');
 
 // Example to display a word (this part can be dynamic)
-displayWord("funny");
+//displayWord("funny");
 
 
 // get the feedback!
-//const getFeedback = require('./gpt');

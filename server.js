@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
+app.use(express.json()); // This line is crucial
 
 
 const getNextWord = require('./public/words');
+const getFeedback = require('./public/gpt');
 
 
 // Serve static files (CSS, client-side JS, images, etc.)
@@ -23,11 +25,23 @@ app.get('/', (req, res) => {
 // Endpoint to handle the form submission
 app.post('/submit-text', (req, res) => {
     console.log('Text received:', req.body.textInput);
-    res.send('Text received: ' + req.body.textInput);
+    res.send(req.body.textInput);
   });
 
 app.get('/next-word', (req, res) => {
     res.send(getNextWord());
+});
+
+app.post('/feedback', async (req, res) => {
+    console.log("SERVER RECEIVED: ", req.body); // Add this line to log the request body
+    const { word, willsTranscription, studentsTranscription } = req.body;
+
+    try {
+        const feedback = await getFeedback(word, willsTranscription, studentsTranscription);
+        res.json({ feedback });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // Set up the server to listen on a port
