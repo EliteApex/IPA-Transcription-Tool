@@ -49,7 +49,7 @@ body {
     border-radius: 5px;
     padding: 20px;
     width: 400px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -88,7 +88,7 @@ button:hover {
     font-size: 23px;
     border: 2px solid rgb(36, 36, 36); /* This creates a black border */
     min-width: 200px;
-    max-height: 500px;
+    max-height: 350px;
     min-height: 50px;
     box-sizing: border-box; /* Include padding and border in the element's width */
     max-width: 50%;
@@ -96,11 +96,21 @@ button:hover {
     padding: 10px;           /* This adds some space inside the box */
     margin: 10px;            /* This adds some space outside the box */
     box-shadow: 3px 3px 5px grey; /* Optional: Adds a shadow for a 3D effect */
+    overflow-y: auto;
+}
+
+.keyboard-container {
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .ipaKeyboard {
+    margin:auto;
+    text-align: center;
+    max-width: 850px;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #9e41c9;
     background-color: #585558;
     border-radius: 5px;
