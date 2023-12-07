@@ -23,6 +23,7 @@ var currWillTransc = '';
 
 var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s.' +
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
+var button = document.querySelector('button'); // assumes only one button
 
 // get the initial word
 fetch('/next-word')
@@ -45,6 +46,9 @@ var gotCorrect = false; // track whether to move onto the next word
 // SUBMIT or NEXT WORD button clicked (or ENTER pressed)
 document.getElementById('textForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    button.style.backgroundColor = '#9e41c9';
+    button.textContent = 'Submit';
+
 
     var textInput = document.getElementById('textInput');
     var formData = new URLSearchParams();
@@ -95,6 +99,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 gotCorrect = true;
                 console.log('Feedback:', correctFeedback);
                 displayFeedback(correctFeedback); // display feedback
+                // change button message + color
+                button.style.backgroundColor = 'green';
+                button.textContent = 'Next Word!';
             }
             else {
                 console.log("INCORRECT")
