@@ -31,11 +31,11 @@ fetch('/next-word')
 
     console.log('New Word:', currWord);
     console.log('New Transcription:', currWillTransc);
+    displayWord(currWord); // oh boy! new word!
   })
   .catch(error => {
     console.error('Error fetching the next word:', error);
   });
-
 
 var gotCorrect = false; // track whether to move onto the next word
 
@@ -73,13 +73,11 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
                     console.log('New Word:', currWord);
                     console.log('New Transcription:', currWillTransc);
+                    displayWord(currWord); // oh boy! new word!
                 })
                 .catch(error => {
                     console.error('Error fetching the next word:', error);
-                });
-            
-            displayWord(currWord); // oh boy! new word!
-            
+                });            
         }   
         else {  // text submitted
             console.log("HELP")
@@ -111,9 +109,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
             }
         }
 
-
-
-        displayFeedback(data); // Update and show the feedback
+        displayFeedback("..."); // Update and show the feedback
     });
 
     // clear input box when submit presssed
