@@ -73,6 +73,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
             button.textContent = 'Submit';
 
             gotCorrect = false; // reset
+            textInput.value = '';             // clear input box
 
             // getNextWord
             fetch('/next-word')
@@ -96,19 +97,24 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 });            
         }   
         else {  // text submitted
-
             // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
-                feedbackLine.classList.remove('loading');
-                console.log("CORRECT");
-                gotCorrect = true;
-                console.log('Feedback:', correctFeedback);
-                displayFeedback(correctFeedback); // display feedback
-                // change button message + color
-                button.classList.add('button-green');
-                button.textContent = 'Next Word!';
+                displayFeedback(''); // Display feedback after delay
+                feedbackLine.classList.add('loading');
+                // Set a timeout to delay the correct feedback display (more satisfying?)
+                setTimeout(() => {
+                    feedbackLine.classList.remove('loading'); // Stop loading animation
+                    console.log("CORRECT");
+                    gotCorrect = true;
+                    console.log('Feedback:', correctFeedback);
+                    displayFeedback(correctFeedback); // Display feedback after delay
+                    // Change button message + color
+                    button.classList.add('button-green');
+                    button.textContent = 'Next Word!';
+                }, 3000); // 3 seconds delay}
             }
             else {
+                textInput.value = '';             // clear input box
                 console.log("INCORRECT")
                 console.log(currWord, currWillTransc, data); // Debugging line
                 displayFeedback(""); // Update and show the feedback
@@ -139,8 +145,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
         }
     });
 
-    // clear input box when submit presssed
-    textInput.value = '';
+   
 });
 
 const ipaSymbols1 = [

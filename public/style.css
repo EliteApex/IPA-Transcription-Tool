@@ -59,6 +59,7 @@ h1 {
     font-family: 'Space Grotesk';
     font-weight: bold;
     color: #b65ae1;
+    font-size: 50px;
 }
 
 body {
@@ -130,7 +131,7 @@ button:hover {
 
 #feedback {
     display: none;
-    font-size: 23px;
+    font-size: 20px;
     border: 2px solid rgb(36, 36, 36); /* This creates a black border */
     max-height: 350px;
     min-height: 50px;
@@ -171,7 +172,7 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 25px;
-    color: #baaec0;
+    color: #d1c4d7;
     font-family: 'Inter';
 
 }
