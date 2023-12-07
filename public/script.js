@@ -171,6 +171,7 @@ function createButtons(symbols, keyboardId) {
 function insertSymbol(symbol) {
     const input = document.getElementById('textInput');
     input.value += symbol;
+    input.focus();
 }
 
 createButtons(ipaSymbols1, 'ipaKeyboard1');
