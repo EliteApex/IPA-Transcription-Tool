@@ -26,10 +26,46 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url("./SpaceGrotesk/SpaceGrotesk-Bold.ttf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url("./SpaceGrotesk/SpaceGrotesk-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url("./Inter/Inter-Light.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InterB';
+    src: url("./Inter/Inter-Medium.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1 {
+    font-family: 'Space Grotesk';
+    font-weight: bold;
+    color: #b65ae1;
+}
+
 body {
-    font-family: 'Charis SIL';
-    background-color: #282b2f;
-    color: #a85bcc;
+    font-family: 'Inter';
+    font-weight: lighter;
+    background-color: #140734;
+    color: #efcdff;
     text-align: center;
 }
 
@@ -38,18 +74,24 @@ body {
     font-size: 30px;
 }
 
-#wordDisplay {
-    margin-bottom: 25px;
-    font-size: 35px;
-    font-weight: bold;
-}
-
 #textInput {
     border: 2px solid #9e41c9;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     width: 400px;
-    margin-bottom: 10px;
+    margin-right: 10px;
+    /*margin-bottom: 30px;*/
+
+    font-size: 25px;
+    font-family: 'Inter';
+    color: white;
+    background-color: #38074c;
+}
+
+#wordDisplay {
+    margin-bottom: 25px;
+    font-size: 35px;
+    font-family: 'InterB';
 }
 
 button {
@@ -57,9 +99,11 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 20px 20px;
+    padding: 10px 15px;
     cursor: pointer;
     margin-top: 10px;
+    font-size: 20px;
+    font-family:'Space Grotesk';
 }
 
 .button-green {
@@ -81,22 +125,24 @@ button:hover {
     display: flex;
     justify-content: center; /* Center horizontally */
     width: 100%; /* Ensure the container spans the full width */
+    /*margin-bottom: 15px;*/
 }
 
 #feedback {
     display: none;
     font-size: 23px;
     border: 2px solid rgb(36, 36, 36); /* This creates a black border */
-    min-width: 200px;
     max-height: 350px;
     min-height: 50px;
     box-sizing: border-box; /* Include padding and border in the element's width */
     max-width: 50%;
+    min-width: 450px;
     margin: 0 auto;
     padding: 10px;           /* This adds some space inside the box */
     margin: 10px;            /* This adds some space outside the box */
-    box-shadow: 3px 3px 5px grey; /* Optional: Adds a shadow for a 3D effect */
+    box-shadow: 3px 3px 5px #9e41c9; /* Optional: Adds a shadow for a 3D effect */
     overflow-y: auto;
+    color: #a4a5fb;
 }
 
 .keyboard-container {
@@ -107,12 +153,13 @@ button:hover {
 
 .ipaKeyboard {
     margin:auto;
+    margin-top: 25px;
     text-align: center;
     max-width: 850px;
     margin-bottom: 20px;
     padding: 8px;
     border: 1px solid #9e41c9;
-    background-color: #585558;
+    background-color: #513664;
     border-radius: 5px;
 }
 
@@ -120,20 +167,21 @@ button:hover {
     padding: 5px 10px;
     margin: 2px;
     border: 1px solid #9e41c9;
-    background-color: #333231;
+    background-color: #3f2751;
     border-radius: 5px;
     cursor: pointer;
     font-size: 25px;
     color: #baaec0;
+    font-family: 'Inter';
+
 }
 
 .ipaKeyboard button:hover {
     background-color: #9e41c9;
-    color: #ad69cc;
 }
 
 #feedback {
-    margin-top: 20px;
+    margin-top: 25px;
     font-style: italic;
 }
 

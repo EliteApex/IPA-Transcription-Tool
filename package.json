@@ -18,10 +18,12 @@
   "homepage": "https://github.com/EliteApex/LIGN-167-Final#readme",
   "dependencies": {
     "axios": "^1.6.2",
+    "body-parser": "^1.20.2",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "openai": "^4.20.1"
+    "openai": "^4.20.1",
+    "path": "^0.12.7"
   }
 }
