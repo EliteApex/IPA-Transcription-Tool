@@ -21,6 +21,9 @@ function displayFeedback(feedback){
 var currWord = '';
 var currWillTransc = '';
 
+var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s.' +
+'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
+
 // get the initial word
 fetch('/next-word')
   .then(response => response.json())
@@ -62,7 +65,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
         // moving onto next word
         if (gotCorrect){
             gotCorrect = false; // reset
-            
+
             // getNextWord
             fetch('/next-word')
                 .then(response => response.json())
@@ -74,42 +77,52 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     console.log('New Word:', currWord);
                     console.log('New Transcription:', currWillTransc);
                     displayWord(currWord); // oh boy! new word!
+                    
+                    // make feedback box invisible
+                    var feedbackElement = document.getElementById('feedback');
+                    feedbackElement.style.display = 'none';
+                
                 })
                 .catch(error => {
                     console.error('Error fetching the next word:', error);
                 });            
         }   
         else {  // text submitted
-            console.log("HELP")
-            console.log(currWord, currWillTransc, data); // Debugging line
-            fetch('/feedback', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    word: currWord,
-                    willsTranscription: currWillTransc,
-                    studentsTranscription: data
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Feedback:', data.feedback);
-                displayFeedback(data.feedback); // display feedback
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
 
-            // if correct, set correct
+            // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
                 console.log("CORRECT");
                 gotCorrect = true;
+                console.log('Feedback:', correctFeedback);
+                displayFeedback(correctFeedback); // display feedback
+            }
+            else {
+                console.log("INCORRECT")
+                console.log(currWord, currWillTransc, data); // Debugging line
+                displayFeedback("..."); // Update and show the feedback
+
+                fetch('/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        word: currWord,
+                        willsTranscription: currWillTransc,
+                        studentsTranscription: data
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Feedback:', data.feedback);
+                    displayFeedback(data.feedback); // display feedback
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+    
             }
         }
-
-        displayFeedback("..."); // Update and show the feedback
     });
 
     // clear input box when submit presssed
