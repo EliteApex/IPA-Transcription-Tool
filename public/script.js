@@ -14,6 +14,7 @@ function displayFeedback(feedback){
     feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
 
+
 // actually getting the gpt feedback now
 
 
@@ -24,7 +25,8 @@ var correctFeedback = 'Great job! Your transcription matches perfectly with Will
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
 
 var button = document.querySelector('button'); // assumes only one button
-var feedbackLine = document.getElementById('feedback'); // for loading animation
+var feedbackElement = document.getElementById('feedback');
+var metaFeedbackElement = document.getElementById('metaFeedback');
 
 // get the initial word
 fetch('/next-word')
@@ -74,6 +76,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
             gotCorrect = false; // reset
             textInput.value = '';             // clear input box
+            metaFeedbackElement.style.display = 'none';
 
             // getNextWord
             fetch('/next-word')
@@ -88,7 +91,6 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     displayWord(currWord); // oh boy! new word!
                     
                     // make feedback box invisible
-                    var feedbackElement = document.getElementById('feedback');
                     feedbackElement.style.display = 'none';
                 
                 })
@@ -99,26 +101,32 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
         else {  // text submitted
             // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
+                metaFeedbackElement.style.display = 'none';
                 displayFeedback(''); // Display feedback after delay
-                feedbackLine.classList.add('loading');
+                feedbackElement.classList.add('loading');
                 // Set a timeout to delay the correct feedback display (more satisfying?)
                 setTimeout(() => {
-                    feedbackLine.classList.remove('loading'); // Stop loading animation
+                    feedbackElement.classList.remove('loading'); // Stop loading animation
                     console.log("CORRECT");
                     gotCorrect = true;
                     console.log('Feedback:', correctFeedback);
                     displayFeedback(correctFeedback); // Display feedback after delay
+                    // Change metafeedback
+                    metaFeedbackElement.style.display = 'block';
+                    metaFeedbackElement.style.color = '#32de84';
+                    metaFeedbackElement.innerText = 'Great work!';
                     // Change button message + color
                     button.classList.add('button-green');
                     button.textContent = 'Next Word!';
                 }, 3000); // 3 seconds delay}
             }
             else {
-                textInput.value = '';             // clear input box
+                metaFeedbackElement.style.display = 'none';
                 console.log("INCORRECT")
                 console.log(currWord, currWillTransc, data); // Debugging line
                 displayFeedback(""); // Update and show the feedback
-                feedbackLine.classList.add('loading');
+                textInput.value = '';             // clear input box
+                feedbackElement.classList.add('loading');
 
                 fetch('/feedback', {
                     method: 'POST',
@@ -133,7 +141,13 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    feedbackLine.classList.remove('loading');
+                    // Change metafeedback
+                    metaFeedbackElement.style.display = 'block';
+                    metaFeedbackElement.style.color = '#e48484';
+                    metaFeedbackElement.innerHTML = 'Not quite; your transcription was not the same as Will\'s.'+
+                    '<br>GPT may erroneously say it was right. Try again!';
+                    
+                    feedbackElement.classList.remove('loading');
                     console.log('Feedback:', data.feedback);
                     displayFeedback(data.feedback); // display feedback
                 })

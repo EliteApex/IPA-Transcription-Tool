@@ -146,6 +146,14 @@ button:hover {
     color: #a4a5fb;
 }
 
+#metaFeedback {
+    display: none;
+    margin-top: 5px;
+    font-family: 'Space Grotesk';
+    color: #e48484;
+    font-size: 15px;
+}
+
 .keyboard-container {
     display: flex;
     flex-direction: column;
