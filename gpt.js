@@ -39,6 +39,7 @@ const getFeedback = async (word, willsTranscription, studentsTranscription) => {
                             "So don't call our correct answers “standard transcriptions”. This can be misleading to the students. Instead, call them 'Will's transcriptions', as these transcriptions are based on Will Styler's dialect.\n" +
                             "Consider the possible reasons of why the student had that answer. If you think it might've been something to do with the student's accent, mention that as a part of your feedback.\n" +
                             "Explain why the student's transcription is wrong. If certain parts of the transcription is wrong, for instance, if a student used 'ʒ' instead of 'z', find words which uses these symbols and show the student the difference between the two symbols. \n\n" +
+                            "If anyone doesn't give answers with phonemes seperated by spaces, tell them that this assignment requires them to seperate each phoneme with a hyphen. \n"+
                             "DO NOT GIVE AWAY THE CORRECT TRANSCRIPTION\n"
                 },
                 {
