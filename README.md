@@ -1,6 +1,6 @@
 
 # IPA Transcription Helper
-Webapp powered by GPT-4 to help students practice transcribing words to the International Phonetic Alphabet. GPT-4 provides detailed feedback for incorrect transcriptions.
+Webapp powered by GPT-4 to help students practice transcribing words to the International Phonetic Alphabet. GPT-4 provides detailed feedback for transcriptions.
 
 Intended for use in [Will Styler's](https://wstyler.ucsd.edu/) LIGN 101 course. Uses words and transcription answers from Will's IPA exercises.
 
@@ -22,14 +22,14 @@ Uses NodeJS.
 Instructors can upload their own `words.csv` file containing a list of words and their "correct" transcriptions (according to the IPA rules chosen by the instructor) for students to practice with.
 
 **Requirements for `words.csv`**
-- Must be located in the `./public` directory (where the demo `words.csv` file is)
-- Two columns, `Word,Transcription`
-- Example `/public/words.csv`: 
+- Must be located in the root directory (where the demo `words.csv` file is)
+- Two columns, `Word,Transcription`, where the transcriptions have phonemes delimited by spaces
+- Example `words.csv`: 
     ```
     Word,Transcription
-    test,tɛst
-    face,fejs
-    fridge,fɹɪʤ
+    test,t ɛ s t
+    face,f ej s
+    fridge,f ɹ ɪ ʤ
     ...
     ```
 
