@@ -63,11 +63,19 @@ h1 {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Inter';
     margin-top: 8px;
+    margin-bottom: 0px;
+    color: #c67cbb;
+}
+
+h3 {
+    font-size: 18px;
+    font-family: 'Inter';
+    margin-top: 5px;
     margin-bottom: 25px;
-    color: #e698da;
+    color: #9e81d2;
 }
 
 body {

@@ -67,14 +67,4 @@ const getFeedback = async (word, willsTranscription, studentsTranscription) => {
     }
 };
 
-// Main execution
-// const [,, word, willsTranscription, studentsTranscription] = process.argv;
-// if (word && willsTranscription && studentsTranscription) {
-//     getFeedback(word, willsTranscription, studentsTranscription)
-//         .then(feedback => console.log(feedback))
-//         .catch(err => console.error('Error in getFeedback:', err));
-// } else {
-//     console.log('Please provide the necessary arguments: word, wills transcription, and students transcription');
-// }
-
 module.exports = getFeedback;
