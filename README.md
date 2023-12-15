@@ -4,6 +4,18 @@ Webapp powered by GPT-4 to help students practice transcribing words to the Inte
 
 Intended for use in [Will Styler's](https://wstyler.ucsd.edu/) LIGN 101 course. Uses words and transcription answers from Will's IPA exercises.
 
+Powered by OpenAI's ChatGPT-4 API. Requires a local GPT-4 API key.
+
+Uses NodeJS.
+
+## To Run
+
+1. [Install NodeJS](https://nodejs.org/en/download).
+    > Working on **Version 20.9.0**
+2. Add GPT-4 API key to your system Environment Variables. [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
+3. Clone this repository and navigate to its root folder.
+4. `node server.js` runs the website at [http://localhost:3000/](http://localhost:3000/)
+
 
 ## Features
 ### Use custom CSV for words and transcriptions
@@ -21,16 +33,7 @@ Instructors can upload their own `words.csv` file containing a list of words and
     ...
     ```
 
-## To Run
-
-1. [Install NodeJS](https://nodejs.org/en/download) on your computer.
-> Working on **Version 20.9.0**
-2. Go to the repo folder and run `npm install`
-3. Add GPT-4 API key to your system Environment Variables. [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
-4. `node server.js` runs the website at [http://localhost:3000/](http://localhost:3000/)
-
-
-**Node modules to have**
+### **Node modules used**
 - `npm install []`
     - express
     - body-parser
