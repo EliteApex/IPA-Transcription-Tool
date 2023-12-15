@@ -1,7 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 
-const csvPath = './public/words.csv';
+const csvPath = './words.csv';
 const wordMap = {};
 const wordsInOrder = [];
 
