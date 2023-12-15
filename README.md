@@ -25,12 +25,11 @@ Instructors can upload their own `words.csv` file containing a list of words and
 
 1. [Install NodeJS](https://nodejs.org/en/download) on your computer.
 > Working on **Version 20.9.0**
-2. Go to the repo folder and run `npm install`
-3. Add GPT-4 API key to your system Environment Variables. [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
-4. `node server.js` runs the website at [http://localhost:3000/](http://localhost:3000/)
+2. Add GPT-4 API key to your system Environment Variables. [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
+3. `node server.js` runs the website at [http://localhost:3000/](http://localhost:3000/)
 
 
-**Node modules to have**
+**Node modules used**
 - `npm install []`
     - express
     - body-parser
