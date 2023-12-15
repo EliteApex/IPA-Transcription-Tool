@@ -66,8 +66,8 @@ fetch('/next-word')
     currWord = data[0];
     currWillTransc = data[1];
 
-    console.log('New Word:', currWord);
-    console.log('New Transcription:', currWillTransc);
+    //console.log('New Word:', currWord);
+    //console.log('New Transcription:', currWillTransc);
     displayWord(currWord); // oh boy! new word!
   })
   .catch(error => {
@@ -93,7 +93,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
     .then(response => response.text())
     .then(data => {
         // ******UPON SUBMIT: Crucial content******
-        console.log("DATA: ", data);
+        //console.log("DATA: ", data);
 
         // move onto next word
         if (gotCorrect){
@@ -112,8 +112,8 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     currWord = data[0];
                     currWillTransc = data[1];
 
-                    console.log('New Word:', currWord);
-                    console.log('New Transcription:', currWillTransc);
+                    //console.log('New Word:', currWord);
+                    //console.log('New Transcription:', currWillTransc);
 
                     // display the word ("Transcribe <word>")
                     displayWord(currWord);
@@ -134,10 +134,10 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
 
                 // Set a timeout to delay the correct feedback display (more satisfying?)
                 setTimeout(() => {
-                    console.log("CORRECT");
+                    //console.log("CORRECT");
                     feedbackElement.classList.remove('loading'); // Stop loading animation
                     gotCorrect = true;
-                    console.log('Feedback:', correctFeedback);
+                    //console.log('Feedback:', correctFeedback);
                     displayFeedback(correctFeedback);
 
                     // Change metafeedback
@@ -149,11 +149,11 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     button.classList.add('button-green');
                     button.textContent = 'Next Word!';
 
-                }, 1500); // 1.5 seconds delay
+                }, 2000); // 2 seconds delay
             }
             else {
-                console.log("INCORRECT")
-                console.log(currWord, currWillTransc, data); // Debugging line
+                //console.log("INCORRECT")
+                //console.log(currWord, currWillTransc, data); // Debugging line
 
                 // catch if formatting incorrect
                 if (!isFormattedCorrectly(data)){
@@ -162,9 +162,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     feedbackElement.classList.add('loading');
                     // Set a timeout to delay the correct feedback display (more satisfying?)
                     setTimeout(() => {
-                        console.log("FORMATTING ISSUE");
+                        //console.log("FORMATTING ISSUE");
                         feedbackElement.classList.remove('loading'); // Stop loading animation
-                        console.log('Feedback:', wrongFormatFeedback);
+                        //console.log('Feedback:', wrongFormatFeedback);
                         displayFeedback(wrongFormatFeedback);
 
                         // Change metafeedback
@@ -172,7 +172,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                         metaFeedbackElement.style.color = '#e48484';
                         metaFeedbackElement.innerText = 'Formatting issue!';
 
-                    }, 3000); // 3 seconds delay
+                    }, 1500); // 3 seconds delay
                 }
                 else {
                     metaFeedbackElement.style.display = 'none';
@@ -195,7 +195,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     .then(response => response.json())
                     .then(data => {
                         feedbackElement.classList.remove('loading');
-                        console.log('Feedback:', data.feedback);
+                        //console.log('Feedback:', data.feedback);
                         displayFeedback(data.feedback); // display feedback
     
                         // Change metafeedback
@@ -206,7 +206,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                         '<br>GPT may erroneously say it was right. Try again!';
                     })
                     .catch(error => {
-                        console.error('Error:', error);
+                        //console.error('Error:', error);
                     });
                 }
             }
