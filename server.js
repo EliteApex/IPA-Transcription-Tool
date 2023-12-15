@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 // Endpoint to handle the form submission
 app.post('/submit-text', (req, res) => {
-    console.log('Text received:', req.body.textInput);
+    //console.log('Text received:', req.body.textInput);
     res.send(req.body.textInput);
   });
 
@@ -33,7 +33,7 @@ app.get('/next-word', (req, res) => {
 });
 
 app.post('/feedback', async (req, res) => {
-    console.log("SERVER RECEIVED: ", req.body); // Add this line to log the request body
+    //console.log("SERVER RECEIVED: ", req.body); // Add this line to log the request body
     const { word, willsTranscription, studentsTranscription } = req.body;
 
     try {

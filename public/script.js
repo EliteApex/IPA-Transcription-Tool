@@ -55,6 +55,7 @@ var wrongFormatFeedback = 'Please check your formatting. Make sure you separate 
 var button = document.querySelector('button');
 var feedbackElement = document.getElementById('feedback');
 var metaFeedbackElement = document.getElementById('metaFeedback');
+var wordSubmittedElement = document.getElementById('wordSubmitted');
 
 var gotCorrect = false; // track whether to move onto the next word
 
@@ -103,6 +104,7 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
             gotCorrect = false;
             textInput.value = '';             // clear input box
             metaFeedbackElement.style.display = 'none';
+            wordSubmittedElement.style.display = 'none';
 
             // get the next word
             fetch('/next-word')
@@ -125,6 +127,9 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                 });            
         }   
         else {  // submitted text
+            wordSubmittedElement.innerHTML = 'You submitted: <b>' +  data + '</b>';
+            wordSubmittedElement.style.display = 'block';
+
             // if correct, set correct, display hardcoded message
             if (data === currWillTransc) {
 

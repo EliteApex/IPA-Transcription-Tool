@@ -54,12 +54,29 @@
     font-style: normal;
 }
 
+body {
+    font-family: 'Inter';
+    font-weight: lighter;
+    background-color: #140734;
+    color: #efcdff;
+    text-align: center;
+}
 
 h1 {
     font-family: 'Space Grotesk';
     font-weight: bold;
     color: #b65ae1;
-    font-size: 50px;
+    font-size: 48px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+
+#wordDisplay {
+    font-size: 34px;
+    font-family: 'InterB';
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 h2 {
@@ -76,14 +93,6 @@ h3 {
     margin-top: 5px;
     margin-bottom: 25px;
     color: #9e81d2;
-}
-
-body {
-    font-family: 'Inter';
-    font-weight: lighter;
-    background-color: #140734;
-    color: #efcdff;
-    text-align: center;
 }
 
 #app {
@@ -103,13 +112,6 @@ body {
     font-family: 'Inter';
     color: white;
     background-color: #38074c;
-}
-
-#wordDisplay {
-    font-size: 35px;
-    font-family: 'InterB';
-    margin-bottom: 0px;
-    padding-bottom: 0px;
 }
 
 button {
@@ -159,16 +161,26 @@ button:hover {
     padding: 10px;           /* This adds some space inside the box */
     margin: 10px;            /* This adds some space outside the box */
     box-shadow: 3px 3px 5px #9e41c9; /* Optional: Adds a shadow for a 3D effect */
-    overflow-y: auto;
+    overflow-y: scroll;
     color: #a4a5fb;
+    scrollbar-color: #905ab7 #3a3c9c;
+
 }
 
 #metaFeedback {
     display: none;
-    margin-top: 5px;
     font-family: 'Space Grotesk';
     color: #e48484;
-    font-size: 15px;
+    font-size: 17px;
+}
+
+#wordSubmitted {
+    display: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'Inter';
+    color: #e4de84;
+    font-size: 17px;
 }
 
 .keyboard-container {

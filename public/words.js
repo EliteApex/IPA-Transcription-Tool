@@ -9,7 +9,7 @@ const wordsInOrder = [];
 // words.csv should have two columns, Word and Transcription
 // callback function runs when readCSV complete.
 (function readCSV() {
-  console.log("CSV being read");
+  console.log("Reading words.csv");
   fs.createReadStream(csvPath)
     .pipe(csv())
     .on('data', (row) => {

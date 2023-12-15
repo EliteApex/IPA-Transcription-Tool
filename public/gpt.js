@@ -1,11 +1,11 @@
 require('dotenv').config();
 const axios = require('axios');
 
-console.log('KEY: ', process.env.OPENAI_API_KEY);
+//console.log('KEY: ', process.env.OPENAI_API_KEY);
 
 const getFeedback = async (word, willsTranscription, studentsTranscription) => {
-    console.log("GPT RECEIVED: ");
-    console.log(word, willsTranscription, studentsTranscription);
+    //console.log("GPT RECEIVED: ");
+    //console.log(word, willsTranscription, studentsTranscription);
     try {
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
             model: "gpt-4",
