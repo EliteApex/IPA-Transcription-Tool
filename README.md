@@ -11,7 +11,7 @@ Uses NodeJS.
 ## To Run
 
 1. [Install NodeJS](https://nodejs.org/en/download).
-> Working on **Version 20.9.0**
+    > Working on **Version 20.9.0**
 2. Add GPT-4 API key to your system Environment Variables. [https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
 3. Clone this repository and navigate to its root folder.
 4. `node server.js` runs the website at [http://localhost:3000/](http://localhost:3000/)
