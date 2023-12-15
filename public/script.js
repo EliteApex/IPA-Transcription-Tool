@@ -16,13 +16,41 @@ function displayFeedback(feedback){
     feedbackElement.style.display = 'block'; // Make the feedback box visible
 }
 
+// returns false if there are no spaces in the transcription
+// not including leading and trailing spaces
+// assuming there is more than one phoneme
+// (assuming phonemes are max two characters)
+function isFormattedCorrectly(str) {
+    // strip whitespace from both ends of a string
+    const trimmedStr = str.trim();
+    // returns null if no spaces found
+    const matches = trimmedStr.match(/ /g);
+
+    // if more than one phoneme and no spaces
+    if (trimmedStr.length > 2 && matches === null){
+        return false;
+    }
+
+    // check that each phoneme is not >2 chars long
+    const phonemeArr = trimmedStr.split(' ');
+    for (let phoneme of phonemeArr){
+        if (phoneme.length < 1 || phoneme.length > 2){
+            return false;
+        }
+    }
+    return true;
+}
+
+
 // store current word and answer
 var currWord = '';
 var currWillTransc = '';
 
-// hardcorded correct response
+// hardcorded responses
 var correctFeedback = 'Great job! Your transcription matches perfectly with Will\'s. ' +
 'It seems like you have a solid understanding of the IPA symbols and their corresponding sounds. Keep up the good work!';
+var wrongFormatFeedback = 'Please check your formatting. Make sure you separate each phoneme ' +
+'with a space.'
 
 var button = document.querySelector('button');
 var feedbackElement = document.getElementById('feedback');
@@ -121,44 +149,66 @@ document.getElementById('textForm').addEventListener('submit', function(e) {
                     button.classList.add('button-green');
                     button.textContent = 'Next Word!';
 
-                }, 3000); // 3 seconds delay
+                }, 1500); // 1.5 seconds delay
             }
             else {
                 console.log("INCORRECT")
                 console.log(currWord, currWillTransc, data); // Debugging line
-                metaFeedbackElement.style.display = 'none';
-                displayFeedback(''); // Update and show the feedback
-                textInput.value = '';             // clear input box
-                feedbackElement.classList.add('loading');
 
-                // get feedback
-                fetch('/feedback', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        word: currWord,
-                        willsTranscription: currWillTransc,
-                        studentsTranscription: data
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    feedbackElement.classList.remove('loading');
-                    console.log('Feedback:', data.feedback);
-                    displayFeedback(data.feedback); // display feedback
+                // catch if formatting incorrect
+                if (!isFormattedCorrectly(data)){
+                    displayFeedback(''); // Display feedback after delay
+                    metaFeedbackElement.style.display = 'none';
+                    feedbackElement.classList.add('loading');
+                    // Set a timeout to delay the correct feedback display (more satisfying?)
+                    setTimeout(() => {
+                        console.log("FORMATTING ISSUE");
+                        feedbackElement.classList.remove('loading'); // Stop loading animation
+                        console.log('Feedback:', wrongFormatFeedback);
+                        displayFeedback(wrongFormatFeedback);
 
-                    // Change metafeedback
-                    metaFeedbackElement.style.display = 'block';
-                    metaFeedbackElement.style.color = '#e48484';
-                    metaFeedbackElement.innerHTML = 'Not quite; your transcription was not the same as Will\'s.'+
-                    '<br>GPT may erroneously say it was right. Try again!';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                        // Change metafeedback
+                        metaFeedbackElement.style.display = 'block';
+                        metaFeedbackElement.style.color = '#e48484';
+                        metaFeedbackElement.innerText = 'Formatting issue!';
+
+                    }, 3000); // 3 seconds delay
+                }
+                else {
+                    metaFeedbackElement.style.display = 'none';
+                    displayFeedback(''); // Update and show the feedback
+                    textInput.value = '';             // clear input box
+                    feedbackElement.classList.add('loading');
     
+                    // get feedback
+                    fetch('/feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            word: currWord,
+                            willsTranscription: currWillTransc,
+                            studentsTranscription: data
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        feedbackElement.classList.remove('loading');
+                        console.log('Feedback:', data.feedback);
+                        displayFeedback(data.feedback); // display feedback
+    
+                        // Change metafeedback
+                        metaFeedbackElement.style.display = 'block';
+                        metaFeedbackElement.style.color = '#e48484';
+                        metaFeedbackElement.innerHTML = 'Not quite; your transcription was not the same as Will\'s.'+
+                        '<br>Check your phonemes, and consider where you split them.'+
+                        '<br>GPT may erroneously say it was right. Try again!';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
             }
         }
     });
