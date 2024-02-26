@@ -110,13 +110,13 @@ h3 {
 
     font-size: 25px;
     font-family: 'Inter';
-    color: white;
+    color: #ffffff;
     background-color: #38074c;
 }
 
 button {
     background-color: #9e41c9;
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
@@ -128,7 +128,7 @@ button {
 
 .button-green {
     background-color: green;
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 20px 20px;
